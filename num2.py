@@ -3,13 +3,11 @@ import numpy as np
 import matplotlib as mpl
 import csv
 
-sulfate_values = []
+sulfate_index = 4
 with open("data2.csv", encoding='utf-8') as r_file:
     file = list(csv.reader(r_file, delimiter =","))
     file.pop(0)
-    for line in file:
-        if line[4] != '':
-            sulfate_values.append(float(line[4]))
+    sulfate_values = [float(line[sulfate_index]) for line in file if line[sulfate_index]]
 sulfate_values = np.array(sulfate_values, float)
 
 
